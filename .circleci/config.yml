@@ -16,13 +16,14 @@ jobs:
       - run:
           command: "echo World"
   test_env_vars:
+    build:
     docker:
-      - image: cimg/base:2020.01
+        - image: cimg/base:2020.01
     steps:
       - checkout
       - run:
           name: "Testing env var"
-          command: echo &Name
+          command: echo $Name
 workflows:
   say-hello-world:
     jobs:
