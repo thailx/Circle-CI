@@ -1,33 +1,17 @@
-
 version: 2.1
-orbs:
-  welcome: circleci/welcome-orb@0.4.1
+
+workflows:
+  test-env-vars:
+    jobs:
+      - build
+
 jobs:
-  print_hello:
+  build:
     docker:
-      - image: circleci/node:13.8.0
-    steps:
-      - run:
-          command: "echo Hello"
-  print_world:
-    docker:
-      - image: circleci/node:13.8.0
-    steps:
-      - run:
-          command: "echo World"
-  test_env_vars:
-    docker:
-        - image: cimg/base:2020.01
+      - image: cimg/base:2020.01
     steps:
       - checkout
       - run:
-          name: "Testing env var"
-          command: echo $Name
-workflows:
-  say-hello-world:
-    jobs:
-      - print_hello
-      - print_world:
-          requires:
-            - print_hello
-      - test_env_vars
+          name: "echo an env var that is part of our project"
+          command: |
+            echo $MY_ENV_VAR
