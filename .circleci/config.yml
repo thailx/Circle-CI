@@ -30,4 +30,4 @@ workflows:
       - print_world:
           requires:
             - print_hello
-
+      - test_env_vars
