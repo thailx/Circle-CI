@@ -15,10 +15,6 @@ jobs:
           name: "echo an env var that is part of our project"
           command: |
             return 1
-  test_on_fail:
-    docker:
-      - image: circleci/node:13.8.0
-    steps:
       - run:
           name: "Show this page when errors happen"
           command: echo Failed
